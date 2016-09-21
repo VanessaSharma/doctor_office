@@ -8,7 +8,7 @@ public class PatientTest {
   @Before
   public void initialize() {
     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_office_test", null, null);
-    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991");
+    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991",1);
   }
 
   @After
@@ -23,28 +23,28 @@ public class PatientTest {
 
   @Test
   public void patient_instantiatesCorrectly_true() {
-    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991");
+    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991", 1);
     assertEquals(true, myPatient instanceof Patient);
   }
 
   @Test
   public void getName_instantiatesWithName_String() {
-    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991");    assertEquals("Vanessa Palacios", myPatient.getName());
+    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991", 1);    assertEquals("Vanessa Palacios", myPatient.getName());
   }
 
   @Test
   public void getBirthday_instantiatesWithBirthday_String() {
-    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991");    assertEquals("03/29/1991", myPatient.getBirthday());
+    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991", 1);    assertEquals("03/29/1991", myPatient.getBirthday());
   }
-  
+
   @Test
   public void getPatitentId_PatientInstantiatesWithId_1() {
-    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991");  assertEquals(0, myPatient.getId());
+    Patient myPatient = new Patient("Vanessa Palacios", "03/29/1991", 1);  assertEquals(0, myPatient.getId());
   }
 
   @Test
   public void save_assignsIdToObject() {
-    Patient myPatient = new Patient("Patient House", "03/29/1991");
+    Patient myPatient = new Patient("Patient House", "03/29/1991", 1);
     myPatient.save();
     Patient savedPatient = Patient.all().get(0);
     assertEquals(myPatient.getId(), savedPatient.getId());

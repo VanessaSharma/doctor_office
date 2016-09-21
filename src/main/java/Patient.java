@@ -5,15 +5,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-
 public class Patient {
   private String name;
   private String birthday;
   private int id;
+  private int doctorId;
 
-  public Patient(String name, String birthday) {
+  public Patient(String name, String birthday, int doctorId) {
     this.name = name;
     this.birthday = birthday;
+    this.doctorId = doctorId;
   }
 
   public String getName() {
