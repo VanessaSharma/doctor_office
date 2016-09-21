@@ -1,0 +1,45 @@
+<h1>Welcome to the Doctors Office</h1>
+
+<h2>All doctors:</h2>
+
+if($doctors)
+  <p>Click on a doctor to see the patients</p>
+  <ul>
+    #foreach ($doctor in $doctors)
+      <li><a href="/doctors/$doctor.getId()"></a>$category.getName()</li>
+    #end
+  </ul>
+#else
+  <p>There are no doctors</p>
+#end
+
+<h2>New Doctor:</h2>
+<form action="/doctors" method="post">
+
+  <label for="name">Doctor name</label>
+  <input id="name" name="name" type="text">
+
+  <label for="specialty">Doctor specialty</label>
+  <input id="specialty" name="specialty" type="text">
+
+  <button type="submit" class="btn btn-success">Add Doctor</button>
+</form>
+
+<h2>New Patient:</h2>
+<form action="/patients" method="post">
+  <label for="doctorId">Select a Doctor</label>
+  <select id='doctorId' name='doctorId' type='text'>
+    #foreach($doctor in $doctors)
+      <option value="$doctor.getId()">$doctor.getName()</option>
+    #end
+  </select>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" class="form-control">
+
+    <label for="birthday">Date of Birth:</label>
+    <input id="birthday" name="birthday" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Task</button>
+</form>

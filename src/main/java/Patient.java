@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 
-
 public class Patient {
   private String name;
   private String birthday;

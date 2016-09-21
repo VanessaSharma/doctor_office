@@ -45,9 +45,19 @@ public class DoctorTest {
       assertEquals("Allergist", myDoctor.getSpecialty());
     }
 
-    // @Test
-    // public void getId_doctorInstantiatesWithId_1() {
-    //   myDoctor.save();
-    //   assertTrue(myDoctor.getId() > 0);
-    // }
+    @Test
+    public void find_returnsCategoryWithSameId_secondCategory() {
+      Doctor firstDoctor = new Doctor("Doctor House", "Allergist");
+       firstDoctor.save();
+       Doctor secondDoctor = new Doctor("House", "Algist");
+       secondDoctor.save();
+       assertEquals(Doctor.find(secondDoctor.getId()), secondDoctor);
+     }
+
+    @Test
+    public void getId_doctorInstantiatesWithId_1() {
+      Doctor myDoctor = new Doctor("Doctor House", "Allergist");
+      myDoctor.save();
+      assertTrue(myDoctor.getId() > 0);
+    }
 }
