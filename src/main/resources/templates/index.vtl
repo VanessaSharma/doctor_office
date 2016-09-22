@@ -6,7 +6,7 @@
   <p>Click on a doctor to see the patients</p>
   <ul>
     #foreach ($doctor in $doctors)
-      <li><a href="/doctors/$doctor.getId()"></a>$doctor.getName()</li>
+      <li><a href="/doctors/$doctor.getId()">$doctor.getName()</a></li>
     #end
   </ul>
 #else
@@ -27,8 +27,8 @@
 
 <h2>New Patient:</h2>
 <form action="/patients" method="post">
-  <label for="doctor">Select a doctor:</label>
-  <select id='doctor' name='doctor' type='text'>
+  <label for="doctorId">Select a doctor:</label>
+  <select id='doctorId' name='doctorId' type='text'>
     #foreach($doctor in $doctors)
       <option value="$doctor.getId()">$doctor.getName()</option>
     #end

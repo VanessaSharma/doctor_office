@@ -1,0 +1,16 @@
+<h1>$patient.getName()</h1>
+<h2>Belongs to: $doctor.getName() list.</h2>
+
+<h2>Edit patient: </h2>
+
+<form action="/doctors/$patient.getDoctorId()/patients/$patient.getId()" method="post">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text">
+
+  <label for="birthday">Date of Birth:</label>
+  <input id="birthday" name="birthday" type="text">
+
+  <button type="submit" class="btn btn-info">Update patient</button>
+</form>
+
+<a href="/doctors/$doctor.getId()">Return to $doctor.getName()</a>

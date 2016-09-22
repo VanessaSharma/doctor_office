@@ -12,6 +12,7 @@ public class Doctor {
   private String specialty;
   private int id;
 
+
   public Doctor(String name, String specialty) {
     this.name = name;
     this.specialty = specialty;
@@ -40,7 +41,7 @@ public class Doctor {
   }
 
   public static List<Doctor> all() {
-    String sql = "SELECT * id, name, specialty FROM doctors";
+    String sql = "SELECT id, name, specialty FROM doctors";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Doctor.class);
     }

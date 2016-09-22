@@ -3,6 +3,6 @@ import org.sql2o.*;
 
 
 public class DB {
-  public static Sql2o sql2o = new Sql2o("jdbc:postgres://localhost:5432/doctor_office", null, null);
+  public static Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctor_office", null, null);
   //        URL Java uses to access the database..find our server at localhost: 5432
 }

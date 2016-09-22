@@ -45,6 +45,9 @@ public class Patient {
       return con.createQuery(sql).executeAndFetch(Patient.class);
     }
   }
+  public int getDoctorId() {
+    return doctorId;
+  }
 
   @Override
   public boolean equals(Object otherPatient) {
@@ -52,7 +55,7 @@ public class Patient {
       return false;
     } else {
       Patient newPatient = (Patient) otherPatient;
-      return this.getName().equals(newPatient.getName()) && this.getBirthday().equals(newPatient.getBirthday()) && this.getId() == newPatient.getId();
+      return this.getName().equals(newPatient.getName()) && this.getBirthday().equals(newPatient.getBirthday()) && this.getId() == newPatient.getId() && this.getDoctorId() == newPatient.getDoctorId();
     }
   }
 
@@ -66,5 +69,22 @@ public class Patient {
         .getKey();
     }
   }
-
+  public void update(String name, String birthday) {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "UPDATE patients SET name, birthday = :name, :birthday  WHERE id = :id";
+     con.createQuery(sql)
+       .addParameter("name", name)
+       .addParameter("birthday", birthday)
+       .addParameter("id", id)
+       .executeUpdate();
+     }
+   }
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+  String sql = "DELETE FROM patients WHERE id = :id;";
+  con.createQuery(sql)
+    .addParameter("id", id)
+    .executeUpdate();
+    }
+  }
 }
